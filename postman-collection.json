@@ -9,7 +9,7 @@
         {
             "name": "Payments Endpoint Test",
             "request": {
-                "method": "GET",
+                "method": "POST",
                 "header": [],
                 "url": {
                     "raw": "http://{{baseUrl}}/payments/c",
@@ -33,21 +33,22 @@
                             "  pm.expect(pm.response.code).to.equal(200);",
                             "});",
                             "",
-                            "pm.test('Response has the required fields - status and id', function () {",
+                            "pm.test('Response has the required orderId - success and description', function () {",
                             "    const responseData = pm.response.json();",
                             "    pm.expect(responseData).to.be.an('object');",
-                            "    pm.expect(responseData).to.have.property('status');",
-                            "    pm.expect(responseData).to.have.property('id');",
+                            "    pm.expect(responseData).to.have.property('orderId');",
+                            "    pm.expect(responseData).to.have.property('description');",
+                            "    pm.expect(responseData).to.have.property('success');",
                             "});",
                             "",
-                            "pm.test('Status is a non-empty string', function () {",
+                            "pm.test('orderId is a non-empty string', function () {",
                             "    const responseData = pm.response.json();",
-                            "    pm.expect(responseData.status).to.be.a('string').and.to.have.lengthOf.at.least(1, 'Status should be a non-empty string');",
+                            "    pm.expect(responseData.orderId).to.be.a('string').and.to.have.lengthOf.at.least(1, 'orderId should be a non-empty string');",
                             "});",
                             "",
-                            "pm.test('Id is a non-empty string', function () {",
+                            "pm.test('description is a non-empty string', function () {",
                             "    const responseData = pm.response.json();",
-                            "    pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, 'Id should be a non-empty string');",
+                            "    pm.expect(responseData.description).to.be.a('string').and.to.have.lengthOf.at.least(1, 'description should be a non-empty string');",
                             "});"
                         ]
                     }
